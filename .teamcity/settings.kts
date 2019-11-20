@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 /*
@@ -37,6 +38,19 @@ object MavenProject : Project({
     vcsRoot(MavenProject_ProjectRoot)
 
     buildType(MavenProject_RunTests)
+    buildType(MavenProject_SimpleEcho)
+})
+
+object MavenProject_SimpleEcho : BuildType({
+    name = DslContext.getParameter("build.name.maven.echo")
+
+    steps {
+        script {
+            scriptContent = """
+                echo Special Russial Symbol: ${DslContext.getParameter("script.symbols.russian")}
+                """.trimIndent()
+        }
+    }
 })
 
 object MavenProject_RunTests : BuildType({

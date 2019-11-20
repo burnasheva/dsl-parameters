@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="d0144c33-5603-4556-987f-30315005a45a" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Project with DSL settings</name>
+  <parameters />
+  <project-extensions>
+    <extension id="PROJECT_EXT_2" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="PREFER_VCS" />
+        <param name="credentialsStorageType" value="credentialsJSON" />
+        <param name="enabled" value="true" />
+        <param name="rootId" value="VersionedSettingsRoot" />
+        <param name="showChanges" value="true" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup />
+</project>
+

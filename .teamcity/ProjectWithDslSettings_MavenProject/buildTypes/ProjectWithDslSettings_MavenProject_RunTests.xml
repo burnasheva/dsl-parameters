@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="517b5459-64e2-481d-afc6-65aec63ac2ea" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>run tests</name>
+  <description />
+  <settings>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_1" name="" type="Maven2">
+        <parameters>
+          <param name="goals" value="clean test" />
+          <param name="localRepoScope" value="agent" />
+          <param name="maven.path" value="%teamcity.tool.maven.DEFAULT%" />
+          <param name="pomLocation" value="pom.xml" />
+          <param name="runnerArgs" value="-Dmaven.test.failure.ignore=true" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="userSettingsSelection" value="userSettingsSelection:default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="ProjectWithDslSettings_MavenProject_ProjectRoot" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

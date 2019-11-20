@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="ProjectWithDslSettings" uuid="760624eb-1d3e-46df-a4b0-1f83b59d395a" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Maven Project</name>
+  <parameters />
+  <cleanup />
+</project>
+

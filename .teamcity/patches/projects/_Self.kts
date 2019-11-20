@@ -14,8 +14,5 @@ changeProject(DslContext.projectId) {
         add {
             param("§±!@#${'$'}%^&&*", "(&&^%${'$'}##@@")
         }
-        add {
-            param("имя.параметра", "значение")
-        }
     }
 }

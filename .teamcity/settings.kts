@@ -2,6 +2,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
+import java.io.File
+import java.io.FileInputStream
+import java.util.*
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -43,11 +46,17 @@ object MavenProject : Project({
 
 object MavenProject_SimpleEcho : BuildType({
     name = DslContext.getParameter("build.name.maven.echo")
+    val inputFile = FileInputStream(File(DslContext.baseDir, "some.properties"))
+    val prop = Properties()
+    prop.load(inputFile)
+    val optionalParameter = DslContext.getParameter("scrip.symbols.optional", defaultValue = "DEFAULT")
 
     steps {
         script {
             scriptContent = """
                 echo Special Russial Symbol: ${DslContext.getParameter("script.symbols.russian")}
+                echo Property from local file: ${prop.getProperty("property.name")}
+                echo Optional Parameter: $optionalParameter
                 """.trimIndent()
         }
     }

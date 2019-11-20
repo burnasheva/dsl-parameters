@@ -69,6 +69,14 @@
         <configuration>
           <format>kotlin</format>
           <dstDir>target/generated-configs</dstDir>
+          <contextParameters>
+            <build.name.maven>run tests</build.name.maven>
+            <vcs.url.maven>https://github.com/burnasheva/maven_unbalanced_messages.git</vcs.url.maven>
+            <script.symbols.russian>Привет! Как твои дела? 🌸</script.symbols.russian>
+            <build.name.maven.echo>simple echo</build.name.maven.echo>
+            <vcs.name.maven>maven project vcs</vcs.name.maven>
+            <project.name.maven>Maven Project</project.name.maven>
+          </contextParameters>
         </configuration>
       </plugin>
     </plugins>

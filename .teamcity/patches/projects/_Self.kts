@@ -12,6 +12,9 @@ accordingly, and delete the patch script.
 changeProject(DslContext.projectId) {
     params {
         add {
+            param("§±!@#${'$'}%^&&*", "(&&^%${'$'}##@@")
+        }
+        add {
             param("имя.параметра", "значение")
         }
     }

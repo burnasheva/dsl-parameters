@@ -27,13 +27,14 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2019.2"
 
 project {
+    name = DslContext.getParameter("project.name")
 
     subProject(MavenProject)
 }
 
 
 object MavenProject : Project({
-    name = "Maven Project"
+    name = DslContext.getParameter("project.name.maven")
 
     vcsRoot(MavenProject_ProjectRoot)
 
@@ -41,7 +42,7 @@ object MavenProject : Project({
 })
 
 object MavenProject_RunTests : BuildType({
-    name = "run tests"
+    name = DslContext.getParameter("build.name.maven")
 
     vcs {
         root(MavenProject_ProjectRoot)
@@ -56,7 +57,7 @@ object MavenProject_RunTests : BuildType({
 })
 
 object MavenProject_ProjectRoot : GitVcsRoot({
-    name = "project root"
-    url = "https://github.com/burnasheva/maven_unbalanced_messages.git"
+    name = DslContext.getParameter("vcs.name.maven")
+    url = DslContext.getParameter("vcs.url.maven")
     branchSpec = "+:refs/heads/*"
 })

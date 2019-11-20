@@ -81,4 +81,8 @@ object MavenProject_ProjectRoot : GitVcsRoot({
     name = DslContext.getParameter("vcs.name.maven")
     url = DslContext.getParameter("vcs.url.maven")
     branchSpec = "+:refs/heads/*"
+    authMethod = password {
+        userName = "burnasheva"
+        password = "credentialsJSON:65bd2531-08d0-423a-a578-f853db5b788f"
+    }
 })

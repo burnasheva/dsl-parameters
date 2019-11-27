@@ -1,6 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import java.io.File
 import java.io.FileInputStream
@@ -31,8 +30,36 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2019.2"
 
 project {
+    val createDotnet = DslContext.getParameter("is.dotnet.needed", "false")
     subProject(MavenProject)
+    if (createDotnet.toBoolean()) {
+        subProject(DotNetProject)
+    }
 }
+
+object DotNetProject : Project({
+    name = DslContext.getParameter("project.name.dotnet")
+
+    vcsRoot(DotNetProject_ProjectRoot)
+
+    buildType(DotNetProject_RunTests)
+})
+
+object DotNetProject_RunTests : BuildType({
+    name = DslContext.getParameter("build.name.dotnet")
+
+    steps {
+        dotnetRestore {
+            projects = "**/*.csproj"
+        }
+        dotnetBuild {
+            projects = "**/*.csproj"
+        }
+        dotnetTest {
+            projects = "**/*Tests.csproj"
+        }
+    }
+})
 
 
 object MavenProject : Project({
@@ -85,4 +112,10 @@ object MavenProject_ProjectRoot : GitVcsRoot({
         userName = "burnasheva"
         password = "credentialsJSON:65bd2531-08d0-423a-a578-f853db5b788f"
     }
+})
+
+object DotNetProject_ProjectRoot : GitVcsRoot({
+    name = DslContext.getParameter("vcs.name.dotnet")
+    url = DslContext.getParameter("vcs.url.dotnet")
+    branchSpec = "+:refs/heads/*"
 })

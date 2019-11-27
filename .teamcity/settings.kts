@@ -48,6 +48,10 @@ object DotNetProject : Project({
 object DotNetProject_RunTests : BuildType({
     name = DslContext.getParameter("build.name.dotnet")
 
+    vcs {
+        root(DotNetProject_ProjectRoot)
+    }
+
     steps {
         dotnetRestore {
             projects = "**/*.csproj"

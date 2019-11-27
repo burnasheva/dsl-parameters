@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.ui.deleteTemplate
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import java.io.File
 import java.io.FileInputStream
@@ -36,11 +37,24 @@ project {
 
     subProject(MavenProject)
 
-    val createDotnet = DslContext.getParameter("is.dotnet.needed", "false")
-    if (createDotnet.toBoolean()) {
+    val createDotnet = DslContext.getParameter("is.dotnet.needed", "false").toBoolean()
+    if (createDotnet) {
         subProject(DotNetProject)
     }
+
+    val isDefaultTempalate = DslContext.getParameter("is.default.template", "true").toBoolean()
+    if (isDefaultTempalate) {
+        template(DefaultTemplateWithParameter)
+        defaultTemplate = DefaultTemplateWithParameter
+    }
 }
+
+object DefaultTemplateWithParameter : Template({
+    name = DslContext.getParameter("default.template.name")
+    params {
+        param("a", "b")
+    }
+})
 
 object DotNetProject : Project({
     name = DslContext.getParameter("project.name.dotnet")

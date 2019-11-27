@@ -30,8 +30,13 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2019.2"
 
 project {
-    val createDotnet = DslContext.getParameter("is.dotnet.needed", "false")
+
+    vcsRoot(MavenProject_ProjectRoot)
+    vcsRoot(DotNetProject_ProjectRoot)
+
     subProject(MavenProject)
+
+    val createDotnet = DslContext.getParameter("is.dotnet.needed", "false")
     if (createDotnet.toBoolean()) {
         subProject(DotNetProject)
     }
@@ -39,8 +44,6 @@ project {
 
 object DotNetProject : Project({
     name = DslContext.getParameter("project.name.dotnet")
-
-    vcsRoot(DotNetProject_ProjectRoot)
 
     buildType(DotNetProject_RunTests)
 })
@@ -68,8 +71,6 @@ object DotNetProject_RunTests : BuildType({
 
 object MavenProject : Project({
     name = DslContext.getParameter("project.name.maven")
-
-    vcsRoot(MavenProject_ProjectRoot)
 
     buildType(MavenProject_RunTests)
     buildType(MavenProject_SimpleEcho)

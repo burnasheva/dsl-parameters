@@ -50,7 +50,7 @@ project {
 }
 
 object DefaultTemplateWithParameter : Template({
-    name = DslContext.getParameter("default.template.name")
+    name = DslContext.getParameter("default.template.name", "Default Template")
     params {
         param("a", "b")
     }

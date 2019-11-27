@@ -85,9 +85,9 @@ object MavenProject_SimpleEcho : BuildType({
     steps {
         script {
             scriptContent = """
-                echo Special Russial Symbol: ${DslContext.getParameter("script.symbols.russian")}
-                echo Property from local file: ${prop.getProperty("property.name")}
-                echo Optional Parameter: $optionalParameter
+                echo "Special Russial Symbol: ${DslContext.getParameter("script.symbols.russian")}"
+                echo "Property from local file: ${prop.getProperty("property.name")}"
+                echo "Optional Parameter: $optionalParameter"
                 """.trimIndent()
         }
     }

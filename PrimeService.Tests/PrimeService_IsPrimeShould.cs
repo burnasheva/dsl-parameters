@@ -32,7 +32,7 @@ namespace Prime.UnitTests.Services
         [Ignore]
         public void IgnoredTest()
         {
-            Console.WriteLine("some stdOut text");
+            Console.WriteLine("some stdOut text!");
             Console.Error.WriteLine("some stdErr text");
             TestContext.WriteLine("message from test context");
             

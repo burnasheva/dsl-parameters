@@ -70,9 +70,9 @@ object DotNetProject_RunTests : BuildType({
     }
 
     steps {
-        dotnetRestore {
-            projects = "**/*.csproj"
-        }
+//         dotnetRestore {
+//             projects = "**/*.csproj"
+//         }
         dotnetBuild {
             projects = "**/*.csproj"
         }

@@ -53,6 +53,7 @@ object DefaultTemplateWithParameter : Template({
     name = DslContext.getParameter("default.template.name", "Default Template")
     params {
         param("a", "b")
+        param("a1", "b1")
     }
 })
 

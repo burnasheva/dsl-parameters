@@ -97,7 +97,12 @@ object MavenProject_SimpleEcho : BuildType({
                 echo "Special Russial Symbol: русские символы"
                 echo "Property from local file: value"
                 echo "Optional Parameter: DEFAULT"
+                echo "Context parameter value: %context.parameter%"
             """.trimIndent()
         }
+    }
+
+    params {
+        param("context.parameter", DslContext.getParameter("context.parameter"))
     }
 })

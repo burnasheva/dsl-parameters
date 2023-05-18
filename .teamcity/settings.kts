@@ -43,6 +43,7 @@ object DefaultTemplateWithParameter : Template({
 
     params {
         param("a", "b")
+        password("parameter-from-token", "credentialsJSON:65bd2531-08d0-423a-a578-731e4cc3cd70")
     }
 })
 
@@ -50,7 +51,6 @@ object DotNetProject_ProjectRoot : GitVcsRoot({
     name = "dotnet vcs"
     url = "https://github.com/burnasheva/mstest_dotnet3.git"
     branchSpec = "+:refs/heads/*"
-    param("useAlternates", "true")
 })
 
 object MavenProject_ProjectRoot : GitVcsRoot({
@@ -61,7 +61,6 @@ object MavenProject_ProjectRoot : GitVcsRoot({
         userName = "burnasheva"
         password = "credentialsJSON:65bd2531-08d0-423a-a578-f853db5b788f"
     }
-    param("useAlternates", "true")
 })
 
 

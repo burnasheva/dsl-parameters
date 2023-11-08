@@ -36,6 +36,8 @@ project {
     template(DefaultTemplateWithParameter)
 
     subProject(MavenProject)
+
+    name = "Default name for project from VCS settings"
 }
 
 object DefaultTemplateWithParameter : Template({
